@@ -1,4 +1,3 @@
-from gtts import gTTS
 from pathlib import Path
 from mutagen.mp3 import MP3
 from utils.console import print_step, print_substep
