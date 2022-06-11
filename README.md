@@ -25,6 +25,11 @@ These videos on TikTok, YouTube and Instagram get MILLIONS of views across all p
 -   **At the moment**, this repository won't attempt to upload this content through this bot. It will give you a file that you will then have to upload manually. This is for the sake of avoiding any sort of community guideline issues.
 -   IMPORTANT!! DO NOT FORGET TO CREDIT FIFTEEN AI IN YOUR VIDEO!! THIS IS REQUIRED BY FIFTEEN AI!
 
+## Differences from main
+
+This fork uses fifteen ai for voice generation instead of google translate. Therefore the text is read more smoothly, quicker and without pauses. You can also change the voice of the reader.
+You can also randomize the voices of reader per video generated. I have left it up to you to decide.
+
 ## Requirements
 
 -   Python 3.6+
