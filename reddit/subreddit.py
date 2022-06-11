@@ -5,6 +5,9 @@ from dotenv import load_dotenv
 console = Console()
 import os, random, praw, re
 
+def has_integer(string):
+    return any(char.isdigit() for char in string)
+
 
 def get_subreddit_threads():
     global submission
@@ -66,7 +69,7 @@ def get_subreddit_threads():
         content["comments"] = []
 
         for top_level_comment in submission.comments:
-            if not top_level_comment.stickied:
+            if not top_level_comment.stickied and not top_level_comment.author == "AutoModerator" and len(top_level_comment.body) < 200 and len(top_level_comment.body) >= 5 and not has_integer(top_level_comment.body):
                 content["comments"].append(
                     {
                         "comment_body": top_level_comment.body,
