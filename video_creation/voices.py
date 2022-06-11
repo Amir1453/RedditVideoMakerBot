@@ -3,7 +3,10 @@ from pathlib import Path
 from mutagen.mp3 import MP3
 from utils.console import print_step, print_substep
 from rich.progress import track
+from fifteen_api import FifteenAPI
+from pydub import AudioSegment
 import re
+import os
 
 
 def sanitize_text(reddit_obj):
@@ -35,12 +38,15 @@ def save_text_to_mp3(reddit_obj):
     print_step("Saving Text to MP3 files...")
     length = 0
 
+    tts_api = FifteenAPI()
+
     # Create a folder for the mp3 files.
     Path("assets/mp3").mkdir(parents=True, exist_ok=True)
 
     thread_title = sanitize_text(reddit_obj["thread_title"])
-    tts = gTTS(text=thread_title, lang="en", slow=False)
-    tts.save(f"assets/mp3/title.mp3")
+    tts_api.save_to_file("Rise Kujikawa",thread_title, "assets/mp3/title.wav")
+    AudioSegment.from_wav("assets/mp3/title.wav").export("assets/mp3/title.mp3", format="mp3")
+    os.remove("assets/mp3/title.wav")
     length += MP3(f"assets/mp3/title.mp3").info.length
 
     try:
@@ -50,8 +56,9 @@ def save_text_to_mp3(reddit_obj):
 
     if reddit_obj["thread_post"] != "":
         thread_post = sanitize_text(reddit_obj["thread_post"])
-        tts = gTTS(text=thread_post, lang="en", slow=False)
-        tts.save(f"assets/mp3/posttext.mp3")
+        tts_api.save_to_file("Rise Kujikawa",thread_post, "assets/mp3/posttext.wav")
+        AudioSegment.from_wav("assets/mp3/posttext.wav").export("assets/mp3/posttext.mp3", format="mp3")
+        os.remove("assets/mp3/posttext.wav")
         length += MP3(f"assets/mp3/posttext.mp3").info.length
 
     for idx, comment in track(enumerate(reddit_obj["comments"]), "Saving..."):
@@ -59,8 +66,9 @@ def save_text_to_mp3(reddit_obj):
         if length > 50:
             break
         comment = sanitize_text(comment["comment_body"])
-        tts = gTTS(text=comment, lang="en", slow=False)
-        tts.save(f"assets/mp3/{idx}.mp3")
+        tts_api.save_to_file("Rise Kujikawa",comment, f"assets/mp3/{idx}.wav")
+        AudioSegment.from_wav(f"assets/mp3/{idx}.wav").export(f"assets/mp3/{idx}.mp3", format="mp3")
+        os.remove(f"assets/mp3/{idx}.wav")
         length += MP3(f"assets/mp3/{idx}.mp3").info.length
 
     print_substep("Saved Text to MP3 files successfully.", style="bold green")
