@@ -23,11 +23,13 @@ These videos on TikTok, YouTube and Instagram get MILLIONS of views across all p
 
 -   This is purely for fun purposes.
 -   **At the moment**, this repository won't attempt to upload this content through this bot. It will give you a file that you will then have to upload manually. This is for the sake of avoiding any sort of community guideline issues.
+-   IMPORTANT!! DO NOT FORGET TO CREDIT FIFTEEN AI IN YOUR VIDEO!! THIS IS REQUIRED BY FIFTEEN AI!
 
 ## Requirements
 
 -   Python 3.6+
 -   Playwright (this should install automatically during installation)
+-   Valid ffmpeg path
 
 ## Installation 👩‍💻
 
@@ -35,6 +37,7 @@ These videos on TikTok, YouTube and Instagram get MILLIONS of views across all p
 
 2. Run `pip3 install -r requirements.txt`
 3. Run `playwright install` and `playwright install-deps`.
+4. Download ffmpeg. For linux, you can download using a packet manager. For windows go to https://ffmpeg.org/download.html and add the bin/ to your PATH. Make sure you can access it by your command line. You may have to restart your computer. 
 4. 
 	4a **Automatic Install**: Run `python3 main.py` and type 'yes' to activate the setup assistant.
 
@@ -56,14 +59,22 @@ I have tried to simplify the code so anyone can read it and start contributing a
 - [x] Allowing users to choose a reddit thread instead of being randomized.
 - [ ] Allowing users to choose a background that is picked instead of the Minecraft one.
 - [x] Allowing users to choose between any subreddit.
-- [ ] Allowing users to change voice.
+- [x] Allowing users to change voice.
 - [ ] Creating better documentation and adding a command line interface.
 
 Please read our [contributing guidelines](CONTRIBUTING.md) for more detailed information.
 
+## Thanks 
+
+wafflecomposite - https://github.com/wafflecomposite For the fifteen ai api that I used.
+
+Elebumm (Lewis#6305) - https://github.com/elebumm (Founder) For creating this project.
+
 ## Developers and maintainers.
 
 Elebumm (Lewis#6305) - https://github.com/elebumm (Founder)
+
+Amir1453 - https://github.com/Amir1453 (ForkMaster)
 
 CallumIO - https://github.com/CallumIO
 
