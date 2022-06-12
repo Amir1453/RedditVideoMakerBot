@@ -58,7 +58,17 @@ def get_subreddit_threads():
                 print_substep("Subreddit not defined. Using AskReddit.")
 
         threads = subreddit.hot(limit=25)
-        submission = list(threads)[random.randrange(0, 25)]
+        f1 = open("created.txt", "r")
+        lines = f1.readlines()
+        lines = [line.strip() for line in lines]
+        for thread in threads:
+            if thread.title not in lines:
+                submission = thread
+                break
+        f1.close()
+        f1 = open("created.txt", "a")
+        f1.write(submission.title + "\n")
+        f1.close()
 
     print_substep(f"Video will be: {submission.title} :thumbsup:")
     console.log("Getting video comments...")
