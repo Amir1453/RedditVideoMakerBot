@@ -66,6 +66,7 @@ I have tried to simplify the code so anyone can read it and start contributing a
 - [x] Allowing users to choose between any subreddit.
 - [x] Allowing users to change voice.
 - [ ] Creating better documentation and adding a command line interface.
+- [x] Not creating already made videos.
 
 Please read our [contributing guidelines](CONTRIBUTING.md) for more detailed information.
 
